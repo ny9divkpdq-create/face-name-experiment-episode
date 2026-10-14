@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>顔と名前の一致記憶実験</title>
+<title>顔と名前の記憶実験(エピソードグループ)</title>
 
 <style>
 body {
@@ -157,7 +157,7 @@ button {
 
     <p>
       これから10名の顔写真・名前・特徴的なエピソードが順番に表示されます。
-      それぞれの顔と名前をできるだけ覚えてください。
+      それぞれの顔と名前をできるだけ覚えてください。特徴的なエピソードは必ず読んでください。
     </p>
 
     <p>
@@ -244,7 +244,7 @@ button {
 const WEB_APP_URL =
 "https://script.google.com/macros/s/AKfycbz1b4lGcnIuhhjtXwYRdOKqitHV9Jg0nwOHiNf7je5YolqbM3f3vOWGOZon_pFSqRGx3g/exec";
 
-/* 実験に使用する10人。画像とエピソードの対応は維持し、名前を更新 */
+/* 実験に使用する10人 */
 const people = [
   {
     id: "person01",
@@ -314,7 +314,6 @@ let remainingTime = displayTime;
 let timer;
 let currentQuestion = 0;
 let testPeople = [];
-/* 回答は元の人物ID順に格納し、既存の本実験用送信形式を維持する */
 let answers = Array(people.length).fill("");
 let experimentStarted = false;
 
@@ -436,7 +435,7 @@ function nextQuestion() {
   const person = testPeople[currentQuestion];
   const answer = document.getElementById("answer").value.trim();
 
-  /* 表示順はランダムだが、回答は元のperson01～person10順に保存 */
+  /* 表示順はランダムでも、回答は元の人物ID順に保存 */
   const originalIndex = people.findIndex(function (item) {
     return item.id === person.id;
   });
